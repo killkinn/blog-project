@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>register form</title>
+</head>
+
+<body>
+
+
+    {% block content%}
+    <form action="" method="POST">
+        {% csrf_token %}
+        {% for field in form%}
+        <br>
+        <br>
+        <label for="">{{field.label}}</label>
+        {{field}}
+        <br><br>
+
+        {% endfor%}
+        <button type="submit">Sign up</button>
+    </form>
+    {% for message in messages %}
+    <h1 style="color: brown;">{{ message}}</h1>
+    {% endfor%}
+    <p>Already have a account?<a href="{%url 'signin'%}">Login</a></p>
+
+    {%endblock%}
+
+</body>
+
+</html>

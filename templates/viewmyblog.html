@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
+
+
+    <!-- icons link -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<style>
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        padding: 5vw;
+
+    }
+</style>
+
+<body>
+    <!-- NAVBAR............ -->
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-warning">
+        <!-- Container wrapper -->
+        <div class="container-fluid">
+
+            <h1>MY BLOGS</h1>
+            <!-- Toggle button -->
+            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
+                data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+
+
+
+            <div class="col-sm-3 my-1">
+                <label class="sr-only" for="inlineFormInputGroupUsername">{{request.user.username}}</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">@</div>
+                    </div>
+                    <a href="#" type="text" class="form-control" id="inlineFormInputGroupUsername"
+                        placeholder="Username"><i style="color: purple; 
+                        " class="fa-solid fa-user"></i>
+                        {{request.user.username}}</a>
+                </div>
+            </div>
+
+            <div class="d-flex align-items-center">
+
+
+                <button class="btn btn-primary me-3">
+                    <a style="color: white; font-size: 18px;" href="{%url 'blogpage'%}">BACK</a>
+                </button>
+
+
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
+                    <li>
+                        <a class="dropdown-item" href="#">My profile</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">Settings</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- Right elements -->
+        </div>
+        <!-- Container wrapper -->
+    </nav>
+    <!-- Navbar -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    {%for blog in myblogs %}
+    <div class="row row-cols-1 row-cols-md-2 g-4 ">
+        <div class="col">
+            <div class="card">
+                {%if blog.Blog_img%}
+                <img src="{{blog.Blog_img.url}}" class="card-img-top" alt="Hollywood Sign on The Hill" />
+                {%endif%}
+                <div class="card-body">
+                    <h3>
+                        <i class="fa-solid fa-user" style="color: blue;"></i>
+                        {{blog.Author_name}}
+                    </h3>
+
+
+                    <h3 style="color: green;">{{blog.Blog_category}}</h3>
+                    <p>{{blog.Publish_date}}</p>
+                    <h5 class="card-title  " style="font-size: 40px; text-align: center;">{{blog.Blog_title}}</h5>
+                    <div class="blog-caption">
+                        <p class="card-text">
+                            {{blog.Blog_caption}}
+                        </p>
+                    </div>
+
+
+
+
+
+
+                    <button type="submit" style=" color: white; border: 2px;">
+                        <a href="{%url 'deleteblog' blog.Blog_id%}"> <i class="fa-regular fa-trash-can"> </i></a>
+
+                    </button>
+
+                    <!-- <i class="fa-regular fa-trash-can"> </i> -->
+
+                    <button type="submit" style="color: white; border: 2px;">
+                        <a href="{%url 'editpage' blog.Blog_id%}"> <i class="fa-regular fa-pen-to-square"></i></a>
+
+
+                    </button>
+                    <i class="fa-solid fa-comment"></i>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    {%endfor%}
+
+
+
+</body>
+
+</html>

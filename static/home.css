@@ -1,0 +1,15 @@
+.row {
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.box {
+    display: flex;
+    justify-content: space-between;
+}
+
+.big {
+    display: flex;
+    justify-content: space-around;
+}

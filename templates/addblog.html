@@ -1,0 +1,44 @@
+{%extends "home.html"%}
+{%block content%}
+
+<style>
+    .caption {
+        vertical-align: top;
+    }
+</style>
+<form action="" method="POST" enctype="multipart/form-data">
+    {%csrf_token%}
+    <div
+        style="height: 950px; width: 790px; background-color: aqua; font-size: 22px; font-weight: 600; text-align: center; margin-left:300px; margin-top: 30px; margin-bottom: 30px;">
+        <br><br>
+        <label for="">BLOG NAME</label>
+        <input type="text" name="Blog_title">
+        <br><br>
+        <label for="">AUTHOR NAME</label>
+        <input value="{{request.user.username}}" type="text" name="Author_name" readonly>
+        <br><br>
+        <label for="">PUBLISH DATE</label>
+        <input type="date" name="Publish_date">
+        <br><br>
+        <label for="category">CATEGORY</label>
+
+        <input type="text" name="Blog_category">
+
+
+        <br><br>
+        <label for="">CAPTION</label>
+        <!-- <input type="text" name="Blog_caption"> -->
+        <textarea class="caption" name="Blog_caption" id="" cols="30" rows="10"></textarea>
+        <br><br>
+        <label for="">BLOG IMAGE</label>
+        <input type="file" name="Blog_img">
+        <br><br>
+        <button type="submit">ADD BLOG</button>
+        <br><br>
+    </div>
+    {% for message in messages %}
+    <h1 style="color: brown;">{{ message}}</h1>
+    {% endfor%}
+
+</form>
+{%endblock%}
